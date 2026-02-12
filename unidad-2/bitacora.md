@@ -39,7 +39,9 @@ que sí están diseñados para sumar vectores correctamente.
 
 ### Actividad 3
 **¿Qué tuviste que hacer para hacer la conversión propuesta?**
+
 Para este ejercicio, tomé el ejemplo del "random walker" de la Unidad 1 y lo convertí para que utilice vectores en lugar de variables separadas para las coordenadas x y y. Lo que tuve que hacer fue crear un vector usando createVector() y luego manipular las coordenadas del vector (por ejemplo, cambiando v.x y v.y) dentro de una función que lo actualiza, en vez de tratar cada componente por separado.
+
 **Código**
 ``` js
 let position;
@@ -65,13 +67,21 @@ function draw() {
 ```
 ### Actividad 4
 **¿Qué resultado esperas obtener en el programa anterior?**
+
 Esperaba que en cosola se viera como se cambian las coordenadas del vector de 6, 9 a 20, 30
+
 **¿Qué resultado obtuviste?**
+
 Lo que esperaba obtener que se accedia al vector por su referencia y se le cambianban sus valores
+
 **¿Qué tipo de paso se está realizando en el código?**
+
 Es paso por referencia
+
 **¿Qué aprendiste?**
+
 Nada
+
 ### Actividad 5
 **1) ¿Para qué sirve el método mag()? ¿Cuál es la diferencia con magSq()? ¿Cuál es más eficiente?**
 El método mag() sirve para calcular la magnitud de un vector, es decir, su longitud. La fórmula es sqrt(x² + y²) para un vector 2D (o sqrt(x² + y² + z²) en 3D).
@@ -103,7 +113,7 @@ normalize() ajusta la magnitud de un vector a 1, pero mantiene su dirección.
 limit() restringe la magnitud de un vector a un valor máximo especificado, lo cual es útil cuando quieres controlar la velocidad o la fuerza de un movimiento en un sistema.
 
 ### Actividad 6
-1) Codigo
+**1) Codigo**
 ``` js
 function setup() {
   createCanvas(200, 200);
@@ -164,19 +174,19 @@ function drawArrow(base, vec, myColor) {
   pop();
 }
 ```
-2) ¿Cómo funciona lerp()?
+**2) ¿Cómo funciona lerp()?**
 
-El método lerp() realiza una interpolación lineal entre dos vectores, calculando un punto intermedio. El tercer parámetro de lerp() es un valor entre 0 y 1 que indica la posición relativa entre los dos vectores:
+El método `lerp()` realiza una interpolación lineal entre dos vectores, calculando un punto intermedio. El tercer parámetro de `lerp()` es un valor entre 0 y 1 que indica la posición relativa entre los dos vectores:
 
-t = 0 significa que el resultado será el primer vector (rojo en este caso).
+`t = 0` significa que el resultado será el primer vector (rojo en este caso).
 
-t = 1 significa que el resultado será el segundo vector (azul).
+`t = 1` significa que el resultado será el segundo vector (azul).
 
-t variando suavemente entre 0 y 1 hace que la flecha morada se mueva suavemente entre estos dos vectores.
+`t` variando suavemente entre 0 y 1 hace que la flecha morada se mueva suavemente entre estos dos vectores.
 
-3) ¿Cómo se dibujan las flechas usando drawArrow()?
+**3) ¿Cómo se dibujan las flechas usando drawArrow()?**
 
-La función drawArrow() es responsable de dibujar una flecha en pantalla.
+La función `drawArrow()` es responsable de dibujar una flecha en pantalla.
 
 line(0, 0, vec.x, vec.y) dibuja la línea que representa el cuerpo de la flecha.
 
@@ -186,17 +196,17 @@ translate(vec.mag() - arrowSize, 0) ajusta la punta de la flecha para dibujarla 
 
 triangle() dibuja la punta de la flecha.
 
-4) ¿Cómo se calcula el vector verde que completa el triángulo?
+**4) ¿Cómo se calcula el vector verde que completa el triángulo?**
 
 El vector verde es el que conecta el final del vector rojo con el final del vector azul, completando el triángulo. Esto se calcula como la diferencia entre las posiciones finales de los dos vectores (es decir, de las punta roja y punta azul). Usamos:
 
-let sideVec = p5.Vector.sub(tipRed, tipBlue);
+`let sideVec = p5.Vector.sub(tipRed, tipBlue);`
 
 
-Donde tipRed es la punta del vector rojo (rojo + base) y tipBlue es la punta del vector azul (azul + base). El resultado, sideVec, es el vector verde que completa el triángulo y se dibuja con drawArrow().
+Donde tipRed es la punta del vector rojo (rojo + base) y tipBlue es la punta del vector azul (azul + base). El resultado, sideVec, es el vector verde que completa el triángulo y se dibuja con `drawArrow()`.
 
 ### Actividad 7
-1) ¿Cuál es el concepto del marco Motion 101 y cómo se interpreta geométricamente?
+**1) ¿Cuál es el concepto del marco Motion 101 y cómo se interpreta geométricamente?**
 
 Motion 101 es un marco simple para describir el movimiento en términos de vectores. Este marco se basa en tres elementos esenciales:
 
@@ -208,7 +218,7 @@ Actualización: El proceso de agregar la velocidad a la posición para mover al 
 
 Geométricamente, la posición es un punto en el espacio, y la velocidad es un vector que indica la dirección y magnitud del movimiento. Al sumar la velocidad a la posición, el objeto se mueve en la dirección indicada por su velocidad. El movimiento puede visualizarse como un desplazamiento de un punto a lo largo de una trayectoria, determinada por la velocidad.
 
-2) ¿Cómo se aplica Motion 101 en el ejemplo?
+**2) ¿Cómo se aplica Motion 101 en el ejemplo?**
 
 En el código del ejemplo 1.7, el marco Motion 101 se implementa de la siguiente manera:
 
@@ -223,23 +233,25 @@ Comprobación de bordes: El método checkEdges() se asegura de que el "mover" se
 Así, el marco Motion 101 se utiliza en este ejemplo para mover un objeto aleatorio dentro de un espacio, aplicando los conceptos de posición, velocidad y actualización en cada fotograma.
 
 ### Actividad 8
-1) Aceleración constante:
+**1) Aceleración constante:**
 Cuando un objeto tiene aceleración constante, significa que la velocidad del objeto cambia de manera uniforme en el tiempo. El objeto empieza a moverse más rápido a medida que pasa el tiempo, ya que la aceleración se suma constantemente a la velocidad en cada fotograma. Geométricamente, esto genera un movimiento en línea recta que se acelera constantemente, produciendo una curvatura creciente en el movimiento.
 
 Observación:
 Al usar aceleración constante, el objeto empieza despacio pero gradualmente va acelerando, lo que genera un movimiento que no es uniforme. En el espacio visual, el objeto se aleja cada vez más rápido del punto de inicio.
 
-2) Aceleración aleatoria:
+**2) Aceleración aleatoria:**
 En este caso, la aceleración cambia aleatoriamente en cada fotograma. Esto hace que el objeto cambie su velocidad en direcciones impredecibles. No hay una trayectoria fija, ya que cada vez que la aceleración cambia, el objeto cambia de dirección y velocidad.
 
 Observación:
 La aceleración aleatoria genera un movimiento errático e impredecible, con saltos inesperados en todas las direcciones. El objeto no sigue una trayectoria coherente y puede cambiar su dirección rápidamente. Este tipo de aceleración genera una sensación de descontrol en el movimiento del objeto.
 
-3) Aceleración hacia el mouse:
+**3) Aceleración hacia el mouse:**
 Aquí, el objeto ajusta su aceleración para moverse hacia el mouse. Esto genera un comportamiento dirigido, donde la aceleración está controlada por la distancia y dirección al mouse. El objeto tiende a acercarse al mouse, pero la aceleración hace que se mueva de manera más fluida en lugar de simplemente hacer un movimiento directo hacia el puntero.
 
 Observación:
 La aceleración hacia el mouse crea un movimiento que se adapta dinámicamente a la posición del mouse. Cuando el mouse está cerca, el objeto se mueve con menor aceleración, y cuando el mouse está más lejos, la aceleración aumenta. Esto genera un movimiento fluido y sensible al control del mouse, lo que lo hace muy interactivo.
+
+## Bitácora de aplicación 
 
 ### Actividad 9
 **1) Concepto de la obra generativa:**
@@ -248,8 +260,10 @@ La obra generativa creada utiliza la fuerza de gravedad como metáfora de atracc
 Regla de aceleración aplicada:
 La aceleración de cada partícula está determinada por la fórmula de gravedad inversa:
 
+```
 Aceleracion = 1/distacia^2
-	​
+```
+​
 Esto significa que, a medida que las partículas se acercan al mouse, la aceleración disminuye, y cuando están más alejadas, la aceleración aumenta. Este comportamiento crea una sensación de atracción dinámica hacia el punto de interacción (el mouse), evocando la manera en que las fuerzas invisibles (como la gravedad) pueden controlar el movimiento de los cuerpos.
 
 Decisión de diseño y exploración artística:
@@ -273,11 +287,11 @@ function draw() {
 
     fill(255, 0, 0);
     noStroke();
-    ellipse(center.x, center.y, 20, 20);  // Objeto central (atrae las partículas)
+    ellipse(center.x, center.y, 20, 20);
 
     for (let p of particles) {
-        p.update(center);  // Actualiza las partículas según la atracción hacia el mouse
-        p.show();  // Dibuja las partículas
+        p.update(center);
+        p.show();
     }
 }
 
@@ -289,36 +303,116 @@ class Particle {
     }
 
     update(center) {
-        // Dirección hacia el centro (mouse)
         let dir = p5.Vector.sub(center, this.position);
         let distance = dir.mag();
 
-        dir.normalize();  // Normaliza la dirección
-        let forceMagnitude = 100 / (distance * distance);  // Fuerza inversamente proporcional a la distancia
-        dir.mult(forceMagnitude);  // Aplica la fuerza al vector de dirección
+        dir.normalize();
+        let forceMagnitude = 100 / (distance * distance); // Gravedad
+        dir.mult(forceMagnitude);
 
         this.acceleration = dir;
-        this.velocity.add(this.acceleration);  // Actualiza la velocidad
-        this.position.add(this.velocity);  // Actualiza la posición
+        this.velocity.add(this.acceleration);
+        this.position.add(this.velocity);
     }
 
     show() {
-        fill(0, 0, 255, 100);  // Color de las partículas
+        fill(0, 0, 255, 100);
         noStroke();
-        ellipse(this.position.x, this.position.y, 10, 10);  // Dibuja la partícula
+        ellipse(this.position.x, this.position.y, 10, 10); // Dibujamos la partícula
     }
 }
 ```
 **Enlace al proyecto en p5.js:**
+
 [LINK](https://editor.p5js.org/supervejito80/sketches/-kzDLXGer)
 
 **Capturas de pantalla representativas:**
+
 <img width="437" height="428" alt="image" src="https://github.com/user-attachments/assets/426f940d-6bb4-4802-a20e-b242aded015f" />
-
-## Bitácora de aplicación 
-
 
 
 ## Bitácora de reflexión
 
+### Actividad 10
+
+**1) Concepto de la obra generativa**
+
+Mi obra generativa se inspira en las ideas de Jared Tarbell y Jeffrey Ventrella, quienes exploran patrones, formas orgánicas y estructuras generativas en su arte. En particular, la obra Clusters de Jeffrey Ventrella muestra cómo los sistemas generativos pueden crear estructuras complejas a partir de reglas simples y de movimiento. Siguiendo este enfoque, creé una obra que utiliza vectores y aceleración para generar patrones dinámicos en tiempo real, donde las partículas o "mover" siguen una dirección influenciada por el mouse.
+
+La pieza juega con la aceleración hacia el mouse, donde cada partícula no solo sigue la dirección del puntero, sino que responde a la aceleración y la interacción en tiempo real, lo que da como resultado un comportamiento fluido y controlado. El concepto principal de esta obra es explorar la relación entre fuerzas invisibles (aceleración) y movimiento y cómo pequeñas reglas pueden generar patrones complejos y visualmente interesantes.
+
+**2) Código de la aplicación**
+``` js
+class Mover {
+  constructor() {
+    this.position = createVector(width / 2, height / 2);
+    this.velocity = createVector();
+    this.acceleration = createVector();
+    this.topspeed = 5;
+  }
+
+  update() {
+    let mouse = createVector(mouseX, mouseY);
+    
+    // Paso 1: Calcular dirección
+    let dir = p5.Vector.sub(mouse, this.position);
+
+    // Paso 2: Normalizar
+    dir.normalize();
+
+    // Paso 3: Escalar
+    dir.mult(0.2);  // Controlamos la intensidad de la aceleración
+
+    // Paso 4: Aceleración
+    this.acceleration = dir;
+
+    // Actualizamos la velocidad y limitamos la velocidad máxima
+    this.velocity.add(this.acceleration);
+    this.velocity.limit(this.topspeed);
+
+    // Actualizamos la posición
+    this.position.add(this.velocity);
+  }
+
+  show() {
+    stroke(0);
+    strokeWeight(2);
+    fill(127);
+    circle(this.position.x, this.position.y, 48);  // Dibuja la partícula
+  }
+}
+
+let movers = [];
+
+function setup() {
+  createCanvas(400, 400);
+  for (let i = 0; i < 5; i++) {
+    movers.push(new Mover());  // Creamos múltiples "movers"
+  }
+}
+
+function draw() {
+  background(200);
+
+  for (let mover of movers) {
+    mover.update();  // Actualizamos la posición de cada "mover"
+    mover.show();    // Mostramos cada "mover" como una partícula
+  }
+}
+```
+
+**3) Enlace al proyecto en el editor de p5.js**
+
+[Link](https://editor.p5js.org/supervejito80/sketches/CVAK48gb3)
+
+**4) Capturas de pantalla representativas de tu pieza de arte generativa**
+
+<img width="416" height="396" alt="image" src="https://github.com/user-attachments/assets/bcbe102f-66a7-427c-86d8-72586d9b8f83" />
+
+
+**5) Resumen del proceso de diseño y reflexión**
+
+Mi obra generativa interactiva utiliza el concepto de Motion 101 de aceleración basada en la dirección hacia el mouse. La obra fue inspirada por la exploración artística de patrones generativos en el trabajo de Jeffrey Ventrella y Jared Tarbell. Al usar aceleración proporcional a la distancia del mouse, he creado un sistema en el que las partículas se mueven hacia el punto de atracción (el mouse) con un comportamiento suave y fluido.
+
+Además, me aseguré de que el sistema fuera interactivo en tiempo real, permitiendo que el usuario influya en el movimiento de las partículas simplemente moviendo el mouse por la pantalla. Esta interactividad no solo añade una capa de control, sino que también genera una experiencia dinámica que cambia constantemente.
 
