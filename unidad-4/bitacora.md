@@ -216,8 +216,163 @@ Durante la simulación pude observar cómo cambiar cada uno de estos parámetros
 Este ejercicio permitió comprender cómo una función matemática relativamente simple puede generar comportamientos dinámicos complejos en una simulación. En el contexto del arte generativo, las funciones sinusoides son muy útiles para crear movimientos suaves, rítmicos y naturales, lo que permite simular fenómenos como vibraciones, oscilaciones o patrones repetitivos en sistemas visuales.
 
 Además, esta actividad me ayudó a entender cómo los parámetros matemáticos pueden convertirse en controles creativos, permitiendo manipular el ritmo y la forma del movimiento dentro de una composición generativa.
+
+### Actividad 08
+
+En esta actividad partí de una simulación de una onda creada con la función seno. En el código original la onda se dibujaba dentro de la función `setup()`, lo que hacía que la simulación se ejecutara solo una vez y la onda permaneciera estática.
+
+Para lograr que la onda se moviera como una ola, trasladé el cálculo de la onda a la función `draw()`, que se ejecuta continuamente en cada frame. Además agregué una variable llamada `offset` que representa un desplazamiento de fase. Este valor se incrementa ligeramente en cada frame, lo que provoca que los valores de la función seno cambien continuamente.
+
+Matemáticamente la onda puede representarse como:
+
+*𝑦 = 𝐴sin(𝜃+𝜙)*
+
+donde:
+
+- **A** es la amplitud
+- **θ** es el ángulo que cambia a lo largo del eje x
+- **φ** es la fase que cambia con el tiempo
+
+Al modificar la fase gradualmente en cada frame, la onda parece desplazarse horizontalmente, generando el efecto visual de una ola en movimiento.
+
+**Código modificado**
+``` js
+// The Nature of Code
+// Daniel Shiffman
+
+let angle = 0;
+let angleVelocity = 0.2;
+let amplitude = 100;
+let offset = 0; // desplazamiento de la onda
+
+function setup() {
+  createCanvas(640, 240);
+}
+
+function draw() {
+  background(255);
+
+  stroke(0);
+  strokeWeight(2);
+  fill(127,127);
+
+  let a = offset;
+
+  for (let x = 0; x <= width; x += 24) {
+
+    let y = amplitude * sin(a);
+
+    circle(x, y + height / 2, 48);
+
+    a += angleVelocity;
+  }
+
+  // mover la onda en el tiempo
+  offset += 0.05;
+}
+```
+**Link**
+-[Código Modificado](https://editor.p5js.org/supervejito80/sketches/zaS2R8mTT)
+
+### Actividad 10
+
+En esta actividad modifiqué la simulación original de un péndulo para crear un sistema compuesto por dos péndulos conectados en serie. En el sistema original solo existía un péndulo conectado a un punto fijo. Para extender la simulación agregué un segundo péndulo cuyo punto de pivote es la masa del primer péndulo.
+
+El comportamiento del sistema sigue el mismo principio físico del péndulo simple. La aceleración angular depende de la gravedad, la longitud del brazo y el ángulo del péndulo.
+
+Donde:
+
+- **g** es la gravedad
+- **L** es la longitud del brazo
+- **θ** es el ángulo del péndulo
+
+En el sistema modificado:
+
+- El primer péndulo cuelga del pivote superior.
+- El segundo péndulo utiliza la posición de la masa del primer péndulo como su pivote.
+
+Esto genera un movimiento más complejo porque el segundo péndulo depende del movimiento del primero. Cuando el primer péndulo cambia de posición, el segundo también cambia su punto de referencia, lo que produce un comportamiento dinámico más interesante.
+
+Este tipo de sistema muestra cómo sistemas físicos simples pueden generar comportamientos más complejos cuando se conectan entre sí.
+
+**Código:**
+``` js
+let pendulum1;
+let pendulum2;
+
+function setup() {
+  createCanvas(640, 240);
+
+  pendulum1 = new Pendulum(width/2,0,120);
+  pendulum2 = new Pendulum(width/2,120,120);
+}
+
+function draw() {
+  background(255);
+
+  pendulum1.update();
+  pendulum1.show();
+
+  // El segundo pivote depende del primero
+  pendulum2.pivot = pendulum1.bob;
+
+  pendulum2.update();
+  pendulum2.show();
+}
+
+class Pendulum {
+
+  constructor(x,y,r){
+    this.pivot = createVector(x,y);
+    this.bob = createVector();
+    this.r = r;
+
+    this.angle = PI/4;
+    this.angleVelocity = 0;
+    this.angleAcceleration = 0;
+
+    this.damping = 0.995;
+    this.ballr = 16;
+  }
+
+  update(){
+
+    let gravity = 0.4;
+
+    this.angleAcceleration = (-gravity/this.r) * sin(this.angle);
+
+    this.angleVelocity += this.angleAcceleration;
+    this.angle += this.angleVelocity;
+
+    this.angleVelocity *= this.damping;
+  }
+
+  show(){
+
+    this.bob.set(
+      this.r * sin(this.angle),
+      this.r * cos(this.angle)
+    );
+
+    this.bob.add(this.pivot);
+
+    stroke(0);
+    strokeWeight(2);
+
+    line(this.pivot.x,this.pivot.y,this.bob.x,this.bob.y);
+
+    fill(127);
+    circle(this.bob.x,this.bob.y,this.ballr*2);
+  }
+
+}
+```
+
+**Link**
+- [Código p5.js](https://editor.p5js.org/supervejito80/sketches/SR7vIyfG-)
 ## Bitácora de aplicación 
 
 
 
 ## Bitácora de reflexión
+
