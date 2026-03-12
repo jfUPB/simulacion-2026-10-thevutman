@@ -372,7 +372,109 @@ class Pendulum {
 - [Código p5.js](https://editor.p5js.org/supervejito80/sketches/SR7vIyfG-)
 ## Bitácora de aplicación 
 
+### Actividad 11
+
+La obra representa un flujo de humo o tinta que se desplaza en un medio invisible, formando remolinos orgánicos que reaccionan a la interacción del usuario. El sistema está definido por un campo de fuerzas que cambia suavemente en el espacio mediante ruido Perlin. Las partículas siguen ese campo como si fueran transportadas por corrientes de aire.
+
+La narrativa conceptual es la de un fluido vivo que respira: el campo de flujo se modula con una función sinusoidal que introduce una pulsación global en el movimiento. El usuario puede intervenir moviendo el mouse, generando perturbaciones que alteran las corrientes y cambian la dirección del flujo.
+
+De esta manera, la obra combina distintos conceptos del curso. La aleatoriedad controlada se introduce mediante ruido Perlin, los vectores definen el movimiento de cada partícula, las fuerzas modifican la aceleración dentro del sistema dinámico, y la modulación sinusoidal introduce un ritmo oscilatorio en el campo de movimiento.
+
+**Código**
+
+``` js
+let particles = [];
+let t = 0;
+
+function setup() {
+  createCanvas(800, 500);
+  background(10);
+}
+
+function draw() {
+
+  // fondo semitransparente para efecto de rastro
+  background(10, 20);
+
+  for (let i = 0; i < 3; i++) {
+    particles.push(new Particle(mouseX, mouseY));
+  }
+
+  for (let p of particles) {
+
+    // campo de flujo con ruido Perlin
+    let n = noise(p.pos.x * 0.005, p.pos.y * 0.005, t);
+
+    // Unidad 4: usar seno para hacer "respirar" el flujo
+    let angle = map(n, 0, 1, -PI, PI) + sin(frameCount * 0.02);
+
+    let force = p5.Vector.fromAngle(angle);
+
+    force.mult(0.1);
+
+    p.applyForce(force);
+
+    p.update();
+    p.show();
+  }
+
+  t += 0.01;
+}
+
+class Particle {
+
+  constructor(x, y) {
+
+    this.pos = createVector(x, y);
+    this.vel = createVector(0, 0);
+    this.acc = createVector(0, 0);
+
+    this.life = 255;
+  }
+
+  applyForce(f) {
+    this.acc.add(f);
+  }
+
+  update() {
+
+    this.vel.add(this.acc);
+    this.pos.add(this.vel);
+
+    this.acc.mult(0);
+
+    this.life -= 2;
+  }
+
+  show() {
+
+    noStroke();
+
+    fill(200, 200, 255, this.life);
+
+    circle(this.pos.x, this.pos.y, 6);
+  }
+}
+```
+
+**Link de la obra**
+- [Código p5.js](https://editor.p5js.org/supervejito80/sketches/YGMCOjv-5)
 
 
 ## Bitácora de reflexión
 
+### Actividad 12
+
+**Diagrama**
+
+![Image]()
+
+**Aplicación a mi perfil profesional**
+
+Desde mi perfil profesional veo varias oportunidades de aplicar estos conocimientos, especialmente en áreas relacionadas con simulación, visualización y arte generativo.
+
+Una de las aplicaciones más claras es el desarrollo de visualizaciones interactivas, donde sistemas generativos permiten representar información de forma dinámica y atractiva. También pueden aplicarse en videojuegos y experiencias digitales, donde conceptos como fuerzas, vectores y movimiento armónico se utilizan para simular comportamientos físicos realistas.
+
+Además, estos conceptos son muy útiles en el campo del arte generativo y diseño interactivo, donde el artista define reglas matemáticas que generan composiciones visuales dinámicas. Este enfoque permite crear obras que evolucionan constantemente y reaccionan a la interacción del usuario.
+
+Finalmente, el uso de simulaciones basadas en física y sistemas dinámicos también tiene aplicaciones en visualización científica y modelado de fenómenos naturales, lo que abre posibilidades para proyectos interdisciplinarios entre arte, tecnología y ciencia.
