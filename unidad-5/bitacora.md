@@ -13,10 +13,12 @@ La pieza generativa representa el ciclo de vida de una idea. Una idea nace de fo
 #### Bocetos
 
 **Boceto 1:**
-Una partícula central (idea) que genera pequeñas partículas a su alrededor conectadas por líneas, mostrando una estructura organizada.
+- <img width="400" height="600" alt="image" src="https://github.com/user-attachments/assets/d3dd82ba-eec2-4c38-a02f-91561ff2569e" />
+
 
 **Boceto 2:**
-La estructura comienza a romperse, las conexiones desaparecen y las partículas se dispersan formando un patrón caótico antes de desaparecer.
+- <img width="400" height="600" alt="image" src="https://github.com/user-attachments/assets/73a6f1c6-2546-42e0-bb58-f9483f4f3356" />
+
 
 #### Mapa de decisiones
 **Tipos de partículas**
