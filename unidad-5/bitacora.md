@@ -263,6 +263,8 @@ class Spring {
   }
 }
 ```
+**Link**
+- [Código en p5.js](https://editor.p5js.org/supervejito80/sketches/F2-wCHtHe)
 #### Capturas
 **Idea recién creada (orden)**
 - <img width="864" height="554" alt="image" src="https://github.com/user-attachments/assets/06facdd0-5388-4fef-827f-5dc57c6e77e1" />
@@ -278,3 +280,53 @@ El sistema está construido como un sistema de partículas donde cada elemento t
 La obra no busca simular un fenómeno físico real, sino usar herramientas de simulación para representar un proceso conceptual: la pérdida de claridad de una idea a medida que se propaga.
 
 ## Bitácora de reflexión
+
+### Actividad 06
+**Parte 1 — Principios fundamentales**
+1. Una partícula es una entidad con estado
+
+Una partícula no es solo un punto en pantalla, sino que tiene información propia como posición, velocidad, aceleración y tiempo de vida. Este estado define cómo se comporta en cada momento dentro del sistema.
+
+2. Una partícula tiene ciclo de vida
+
+Cada partícula nace, evoluciona y muere. Este ciclo no solo es técnico, sino que también puede comunicar una idea o proceso dentro de la simulación.
+
+3. Un sistema de partículas gestiona colecciones dinámicas de elementos
+
+Un sistema de partículas no maneja una sola entidad, sino múltiples partículas que aparecen y desaparecen constantemente, lo que lo convierte en un sistema dinámico.
+
+4. La creación y eliminación de partículas no es un detalle técnico menor
+
+Es una parte fundamental del modelo, ya que define el comportamiento del sistema en el tiempo y también afecta el rendimiento del programa.
+
+5. Debe haber separación entre la lógica de una partícula y la del sistema
+
+Cada partícula debe encargarse de su propio comportamiento, mientras que el sistema gestiona la colección. Esto permite que el código sea más organizado y flexible.
+
+6. Un emisor o particle system es una abstracción importante
+
+El emisor es el encargado de crear partículas y controlar su flujo. Esto permite encapsular la lógica y reutilizarla en diferentes contextos.
+
+7. Pueden existir sistemas de sistemas
+
+Un sistema puede contener múltiples emisores, y cada emisor puede contener múltiples partículas, lo que permite construir estructuras más complejas.
+
+8. Puede haber heterogeneidad usando herencia y polimorfismo
+
+No todas las partículas tienen que comportarse igual. Se pueden crear diferentes tipos de partículas que compartan una base común pero tengan comportamientos distintos.
+
+9. Las partículas pueden responder a fuerzas globales y locales
+
+Las partículas pueden ser afectadas por fuerzas generales como la gravedad o fuerzas específicas como un repulsor, lo que permite crear comportamientos más complejos.
+
+10. La representación visual puede variar sin cambiar el algoritmo
+
+El comportamiento del sistema puede mantenerse igual aunque cambie la forma en que se visualiza, lo que permite experimentar con diferentes estilos visuales.
+
+**Parte 2 — Transferencia a otra herramienta**
+
+Si quisiera recrear esta pieza en una herramienta como Unity, muchos de los conceptos principales se mantendrían iguales. Por ejemplo, el uso de partículas, fuerzas, vectores y ciclos de vida seguiría siendo el mismo, ya que estos son conceptos independientes de la herramienta.
+
+Lo que cambiaría sería la forma de implementación. En lugar de usar p5.js, se utilizarían componentes propios de Unity como sistemas de partículas, físicas integradas y scripts en C#. También cambiaría la forma en que se manejan los gráficos y la interacción.
+
+Sin embargo, el diseño conceptual de la obra, como el ciclo de vida de las partículas, la transformación de la idea y la interacción del usuario, se mantendría intacto. Esto demuestra que los principios aprendidos no dependen de una herramienta específica, sino que son aplicables en diferentes contextos tecnológicos.
