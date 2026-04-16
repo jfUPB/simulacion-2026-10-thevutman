@@ -472,6 +472,8 @@ function keyPressed() {
 
 *Nota: No pude importar el audio. Usar vscode*
 
+[Ya pude agregar el audio](https://editor.p5js.org/supervejito80/full/6D1Tw4oaI)
+
 **Capturas**
 - Flujo inicial
 - Activación de luces traseras
