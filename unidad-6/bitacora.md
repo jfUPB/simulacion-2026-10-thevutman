@@ -41,16 +41,30 @@ Decisiones visuales:
 - luces rojas → referencia automotriz
 - humo → atmósfera y profundidad
 - trails → memoria del movimiento
+  
 **Bocetos (descripción)**
 
 Boceto 1:
+
 Sistema de partículas que siguen un flujo continuo (flow field), generando líneas suaves y orgánicas.
 
+<img width="1280" height="1280" alt="image" src="https://github.com/user-attachments/assets/73f60744-699d-4fe4-b53c-c7429d10eea1" />
+
+
 Boceto 2:
+
 Incorporación de luces traseras que reaccionan al sonido y añaden una referencia visual narrativa.
+
+<img width="1280" height="1280" alt="image" src="https://github.com/user-attachments/assets/e2f21984-a859-4b04-8061-c9b015f8527e" />
+
 
 Boceto 3:
 Sistema atmosférico (humo) distribuido en la escena que refuerza la sensación de espacio y profundidad.
+
+<img width="1280" height="1280" alt="image" src="https://github.com/user-attachments/assets/b72c2791-1a79-435f-93f8-e245a25a9310" />
+
+<img width="1280" height="1280" alt="image" src="https://github.com/user-attachments/assets/fe30edcc-965d-4567-838a-aa0eae41c44f" />
+
 
 **Mapa de decisiones**
 - Flow field → representar movimiento continuo
