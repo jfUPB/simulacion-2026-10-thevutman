@@ -2,6 +2,111 @@
 
 ## Bitácora de proceso de aprendizaje
 
+### Actividad 04 — Integración inicial de palabra, física y audio
+
+En esta exploración trabajé con la palabra **“TEMBLOR”**, separando cada letra como un elemento independiente con comportamiento propio. Cada letra responde en tiempo real al sonido captado por el micrófono.
+
+El objetivo principal de esta prueba fue simular visualmente un temblor mediante el movimiento descontrolado de las letras.
+
+---
+
+## Parte de la palabra construida
+
+La palabra se descompuso en letras individuales:
+
+```txt
+T, E, M, B, L, O, R
+```
+
+Cada letra fue tratada como una entidad independiente, permitiendo que cada una tuviera su propio comportamiento y no se moviera como un bloque rígido.
+
+Esto es importante porque el concepto de “temblor” implica:
+- irregularidad,
+- inestabilidad,
+- y desorden.
+
+La separación de letras permitió generar un comportamiento más orgánico y menos mecánico.
+
+---
+
+## Propiedad física manipulada
+
+La propiedad principal manipulada fue la posición de cada letra en relación con su punto de origen.
+
+Cada letra posee:
+- una posición base (estado de reposo),
+- y una posición actual afectada por el sonido.
+
+El movimiento se genera mediante desplazamientos aleatorios controlados por una fuerza derivada del volumen del audio.
+
+Esto simula una perturbación constante del sistema y genera la sensación de vibración.
+
+---
+
+## Relación con el audio
+
+El sistema utiliza el micrófono como fuente de entrada sonora:
+
+```javascript
+let vol = mic.getLevel();
+```
+
+Este valor representa la amplitud del sonido en tiempo real.
+
+### Relación entre volumen y comportamiento
+
+| Nivel de volumen | Comportamiento |
+|---|---|
+| Bajo | Letras estables |
+| Medio | Vibración leve |
+| Alto | Movimiento caótico |
+
+El volumen se traduce en una fuerza física:
+
+```javascript
+let fuerzaFisica = map(vol, 0, 0.3, 0, 80);
+```
+
+Esta fuerza controla cuánto se desplazan las letras desde su posición original.
+
+---
+
+## Evaluación
+
+### Lo que funcionó
+
+- La relación entre sonido y movimiento es clara e intuitiva.
+- La palabra mantiene su legibilidad mientras se deforma.
+- El comportamiento transmite correctamente la sensación de temblor.
+- La separación de letras genera un efecto más orgánico y dinámico.
+- La interacción en tiempo real hace que el sistema se perciba vivo.
+
+---
+
+### Lo que no funcionó completamente
+
+- El movimiento es totalmente aleatorio y no tiene inercia física real.
+- No existe una simulación continua basada en velocidad o aceleración.
+- El comportamiento puede percibirse más como ruido visual que como una simulación física estructurada.
+- Las letras no poseen relaciones físicas entre sí.
+
+---
+
+## Reflexión para la pieza final
+
+Esta prueba permitió comprender que la relación entre audio y movimiento funciona correctamente y comunica bien el concepto visual.
+
+Sin embargo, también evidenció la necesidad de construir un sistema físico más sólido y coherente.
+
+Para la pieza final (“ERROR”) decidí:
+- incorporar fuerzas físicas reales mediante Matter.js,
+- generar deformaciones y rupturas controladas,
+- mantener la relación directa entre sonido y comportamiento,
+- y construir un sistema donde el caos emergiera a partir de reglas físicas más consistentes.
+
+Esta exploración funcionó como una etapa inicial para comprender cómo traducir conceptos semánticos a comportamiento audiovisual interactivo.
+
+[Link p5.js](https://editor.p5js.org/supervejito80/sketches/Gn7J82PDc)
 
 ## Bitácora de aplicación 
 
